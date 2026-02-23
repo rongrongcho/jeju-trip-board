@@ -1,19 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jeju Trip Favicon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="faviconTitle">
+  <title id="faviconTitle">Jeju Tangerine Favicon</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fff6ef"/>
-      <stop offset="100%" stop-color="#ffe6d1"/>
+      <stop offset="0%" stop-color="#fff8ef"/>
+      <stop offset="100%" stop-color="#ffe8d3"/>
     </linearGradient>
-    <linearGradient id="seal" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffb16b"/>
-      <stop offset="100%" stop-color="#e87431"/>
+    <radialGradient id="tangerine" cx="32%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#ffc47a"/>
+      <stop offset="60%" stop-color="#ff9836"/>
+      <stop offset="100%" stop-color="#ec6a1e"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#52b070"/>
+      <stop offset="100%" stop-color="#278552"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <circle cx="32" cy="34" r="15" fill="url(#seal)"/>
-  <circle cx="27" cy="31" r="1.6" fill="#3a2a22"/>
-  <circle cx="37" cy="31" r="1.6" fill="#3a2a22"/>
-  <path d="M25 38c2.1 2.8 11.9 2.8 14 0" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <path d="M32 16c5 0 8.5 2.8 10.4 7.4" stroke="#2f9a70" stroke-width="3" stroke-linecap="round" fill="none"/>
-  <circle cx="43.2" cy="24.2" r="2.2" fill="#38b57f"/>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+
+  <ellipse cx="34" cy="14.5" rx="6" ry="3.2" fill="url(#leaf)" transform="rotate(-18 34 14.5)" />
+  <rect x="30.8" y="15.1" width="2.6" height="6.2" rx="1.3" fill="#5b8d45" />
+
+  <circle cx="32" cy="35" r="19" fill="url(#tangerine)" />
+  <circle cx="25" cy="28" r="3.1" fill="#ffd5a0" opacity="0.65" />
+  <circle cx="38" cy="44" r="2.3" fill="#d85b15" opacity="0.4" />
+  <path d="M18 36c4-4 8-4 12 0s8 4 12 0 8-4 12 0" fill="none" stroke="#ffbf83" stroke-width="1.8" stroke-linecap="round" opacity="0.45" />
 </svg>
