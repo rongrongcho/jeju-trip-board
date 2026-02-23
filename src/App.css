@@ -433,7 +433,7 @@ button {
 
 .total-timeline-list li {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   column-gap: 0.5rem;
   row-gap: 0.02rem;
   align-items: start;
@@ -468,6 +468,30 @@ button {
   font-size: 0.72rem;
   color: #6f7988;
   grid-column: 2 / 3;
+}
+
+.total-search-link {
+  grid-column: 3 / 4;
+  grid-row: 1 / 4;
+  align-self: center;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.32rem 0.52rem;
+  border-radius: 999px;
+  border: 1px solid #d1bea9;
+  background: linear-gradient(180deg, #ffffff 0%, #fff4e8 100%);
+  color: #8f471b;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.total-search-link:hover {
+  border-color: #e59a5f;
+  background: linear-gradient(180deg, #fffaf5 0%, #ffeddc 100%);
 }
 
 .day-timeline-wrap {
@@ -850,6 +874,12 @@ button {
   color: #8f4a2f;
 }
 
+.travel-app.theme-1 .total-search-link {
+  border-color: #dfb6a2;
+  background: linear-gradient(180deg, #fffefc 0%, #fff1e8 100%);
+  color: #8f4a2f;
+}
+
 .travel-app.theme-1 .highlights {
   border-color: #dfbfa9;
   background: #fff5ee;
@@ -977,6 +1007,7 @@ button {
 }
 
 .travel-app.theme-2 .detail-search-link,
+.travel-app.theme-2 .total-search-link,
 .travel-app.theme-2 .total-day-actions button {
   border-color: #bcbcbc;
   background: #ffffff;
@@ -1029,34 +1060,32 @@ button {
   border-bottom-color: #cccccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .map-pin.active {
-    animation: pulse 1.4s ease-in-out infinite;
-  }
+.map-pin.active {
+  animation: pulse 1.4s ease-in-out infinite;
+}
 
-  .timeline-card {
-    animation: reveal 0.35s ease both;
-  }
+.timeline-card {
+  animation: reveal 0.35s ease both;
+}
 
-  .timeline-card:nth-child(2) {
-    animation-delay: 0.05s;
-  }
+.timeline-card:nth-child(2) {
+  animation-delay: 0.05s;
+}
 
-  .timeline-card:nth-child(3) {
-    animation-delay: 0.1s;
-  }
+.timeline-card:nth-child(3) {
+  animation-delay: 0.1s;
+}
 
-  .timeline-card:nth-child(4) {
-    animation-delay: 0.15s;
-  }
+.timeline-card:nth-child(4) {
+  animation-delay: 0.15s;
+}
 
-  .timeline-card:nth-child(5) {
-    animation-delay: 0.2s;
-  }
+.timeline-card:nth-child(5) {
+  animation-delay: 0.2s;
+}
 
-  .timeline-card:nth-child(6) {
-    animation-delay: 0.24s;
-  }
+.timeline-card:nth-child(6) {
+  animation-delay: 0.24s;
 }
 
 @keyframes pulse {

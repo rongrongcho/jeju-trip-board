@@ -1,6 +1,8 @@
 import { DayPlan } from '../types/travel';
 
 // 일정 수정은 이 파일에서만 진행하면 화면에 바로 반영됩니다.
+// 각 장소에 `url` 값을 넣으면 바로가기 버튼이 해당 URL로 이동합니다.
+// 예: url: 'https://map.naver.com/p/search/...'
 export const jejuPlans: DayPlan[] = [
   {
     id: 'day-1',
@@ -16,6 +18,7 @@ export const jejuPlans: DayPlan[] = [
         x: 41.7,
         y: 17.3,
         icon: '✈️',
+        url: 'https://map.naver.com/p/search/%EC%A0%9C%EC%A3%BC%EA%B3%B5%ED%95%AD/place/11576965?c=15.00,0,0,0,dh&placePath=%3Fbk_query%253D%2525EC%2525A0%25259C%2525EC%2525A3%2525BC%2525EA%2525B3%2525B5%2525ED%252595%2525AD%2526entry%253Dpll'
       },
       {
         id: 2,
@@ -26,10 +29,11 @@ export const jejuPlans: DayPlan[] = [
         x: 48.7,
         y: 15.4,
         icon: '🍽️',
+        url: 'https://map.naver.com/p/entry/place/11858960?lng=126.5186943&lat=33.5126607&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602231535&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh'
       },
       {
         id: 3,
-        title: '호그만거 쇼품샵',
+        title: '호끄만거 소품샵',
         time: '13:30 - 14:10',
         category: '소품',
         detail: '아기자기한 제주 감성 소품 많아서 가볍게 보기 좋음.',
@@ -56,6 +60,7 @@ export const jejuPlans: DayPlan[] = [
         x: 30.6,
         y: 75.5,
         icon: '🏡',
+        url: 'https://map.naver.com/p/entry/place/1137158649?lng=126.3728887&lat=33.2338705&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602231539&locale=ko&svcName=map_pcv5&businessCategory=guesthouse&searchType=place&c=15.00,0,0,0,dh'
       },
       {
         id: 6,
@@ -66,6 +71,7 @@ export const jejuPlans: DayPlan[] = [
         x: 36.7,
         y: 72.2,
         icon: '🛍️',
+        url: 'https://map.naver.com/p/search/%EC%97%AC%EA%B8%B0%20%EA%B3%A0%EC%94%A8%EB%84%A4%20%EC%A0%9C%EC%A3%BC/place/2043855115?placePath=?bk_query=%EC%97%AC%EA%B8%B0%20%EA%B3%A0%EC%94%A8%EB%84%A4%20%EC%A0%9C%EC%A3%BC&entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh'
       },
     ],
     highlights: [

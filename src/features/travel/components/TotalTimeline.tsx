@@ -1,6 +1,7 @@
 import FlightTicket from './FlightTicket';
 import { uiText } from '../../../content/uiText';
 import { DayPlan } from '../types/travel';
+import { resolvePlaceUrl } from '../utils/naverSearch';
 
 type TotalTimelineProps = {
   plans: DayPlan[];
@@ -36,6 +37,15 @@ export default function TotalTimeline({ plans, onMoveToDay }: TotalTimelineProps
                       {place.icon} {place.title}
                     </strong>
                     <span className="total-cat">{place.category}</span>
+                    <a
+                      className="total-search-link"
+                      href={resolvePlaceUrl(place.title, place.url)}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={uiText.detail.naverSearchAriaLabel(place.title)}
+                    >
+                      {'->'}
+                    </a>
                   </li>
                 ))}
               </ol>

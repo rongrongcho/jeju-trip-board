@@ -1,13 +1,13 @@
 import { uiText } from '../../../content/uiText';
 import { Place } from '../types/travel';
-import { createNaverSearchUrl } from '../utils/naverSearch';
+import { resolvePlaceUrl } from '../utils/naverSearch';
 
 type PlaceDetailProps = {
   place: Place;
 };
 
 export default function PlaceDetail({ place }: PlaceDetailProps) {
-  const naverSearchUrl = createNaverSearchUrl(place.title);
+  const placeUrl = resolvePlaceUrl(place.title, place.url);
 
   return (
     <section className="detail-card" aria-live="polite">
@@ -19,7 +19,7 @@ export default function PlaceDetail({ place }: PlaceDetailProps) {
       <div className="detail-actions">
         <a
           className="detail-search-link"
-          href={naverSearchUrl}
+          href={placeUrl}
           target="_blank"
           rel="noreferrer"
           aria-label={uiText.detail.naverSearchAriaLabel(place.title)}
