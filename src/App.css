@@ -1,38 +1,1087 @@
-.App {
-  text-align: center;
+:root {
+  --sand-100: #f8f2e6;
+  --sand-200: #efe4d2;
+  --ink-900: #1f252f;
+  --ink-700: #445063;
+  --line: #cfbeaa;
+  --paper: #fffef9;
+  --teal: #0e8a8f;
+  --teal-soft: #e8f8f9;
+  --orange: #f0682f;
+  --orange-soft: #fff0e7;
+  --shadow: 0 16px 34px rgba(31, 37, 47, 0.12);
 }
 
-.App-logo {
-  height: 40vmin;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink-900);
+  background:
+    radial-gradient(circle at 18% 15%, rgba(14, 138, 143, 0.11), transparent 32%),
+    radial-gradient(circle at 88% 4%, rgba(240, 104, 47, 0.14), transparent 34%),
+    linear-gradient(180deg, #fff8ec 0%, #f2e5d2 78%);
+  font-family: 'SUIT Variable', 'Pretendard Variable', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+}
+
+body.theme-1-body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 188, 157, 0.24), transparent 34%),
+    radial-gradient(circle at 100% 10%, rgba(255, 214, 188, 0.26), transparent 36%),
+    linear-gradient(180deg, #fff7f1 0%, #f7e8dc 78%);
+}
+
+body.theme-2-body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.05), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f2f2f2 82%);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.travel-app {
+  width: min(430px, calc(100% - 0.95rem));
+  margin: 0 auto;
+  padding: 0.95rem 0 1.5rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 1.15rem;
+}
+
+.hero-kicker {
+  margin: 0;
+  letter-spacing: 0.22em;
+  color: var(--ink-700);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0.28rem 0 0.2rem;
+  font-size: clamp(2rem, 7vw, 4.4rem);
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.hero-copy {
+  margin: 0 auto 0.95rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--ink-700) 86%, #ffffff 14%);
+  text-transform: none;
+}
+
+.theme-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  margin: 0.75rem auto 0.25rem;
+  width: min(240px, 100%);
+}
+
+.theme-switch-btn {
+  border: 1px solid #d5c4b2;
+  border-radius: 999px;
+  background: #fffbf6;
+  color: #5f6673;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.42rem 0.2rem;
+}
+
+.theme-switch-btn.active {
+  border-color: #e48a4b;
+  color: #8f461f;
+  background: #fff0e2;
+  box-shadow: 0 6px 16px rgba(228, 138, 75, 0.24);
+}
+
+.theme-switcher-min {
+  width: min(170px, 56%);
+  opacity: 0.42;
+  gap: 0.32rem;
+  margin-top: 1.05rem;
+}
+
+.theme-switcher-min .theme-switch-btn {
+  padding: 0.28rem 0.1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+.theme-switcher-min:hover,
+.theme-switcher-min:focus-within {
+  opacity: 0.82;
+}
+
+.day-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.52rem;
+}
+
+.day-tab {
+  min-width: 92px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, #fff 88%, #f3e5d3 12%);
+  color: var(--ink-900);
+  font-size: 0.86rem;
+  font-weight: 800;
+  padding: 0.5rem 0.98rem;
+}
+
+.day-tab.active {
+  border-color: var(--orange);
+  color: #8b380f;
+  background: var(--orange-soft);
+  box-shadow: 0 8px 18px rgba(240, 104, 47, 0.24);
+}
+
+.map-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.84rem;
+  align-items: end;
+}
+
+.island-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1459 / 900;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, #fff 30%);
+  box-shadow: var(--shadow);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(255, 226, 199, 0.45), transparent 42%),
+    linear-gradient(180deg, #fffdfb 0%, #fff3e8 100%);
+}
+
+.island-map::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px rgba(31, 37, 47, 0.08);
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.map-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 1.18rem;
+  height: 1.18rem;
+  border-radius: 999px;
+  border: 2px solid #f2a15e;
+  background: var(--paper);
+  color: #cc6a2a;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 0.56rem;
+  box-shadow: 0 7px 15px rgba(31, 37, 47, 0.22);
+  touch-action: manipulation;
+  user-select: none;
+  cursor: pointer;
+}
+
+.map-pin::before {
+  content: '';
+  position: absolute;
+  inset: -0.3rem;
+}
+
+.map-pin.active {
+  border-color: #8ad3a6;
+  background: #f4fff8;
+  color: #2f8f63;
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.island-map.edit-mode .map-pin {
+  touch-action: none;
+  cursor: grab;
+}
+
+.island-map.dragging .map-pin.active {
+  cursor: grabbing;
+}
+
+.flight-ticket {
+  border-radius: 12px;
+  border: 1px solid #dfc8b4;
+  background: #fffdf9;
+  box-shadow: 0 10px 22px rgba(31, 37, 47, 0.14);
+  justify-self: end;
+  min-width: 150px;
+  max-width: 178px;
+  overflow: hidden;
+}
+
+.flight-ticket-top {
+  height: 0.78rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  padding-left: 0.46rem;
+  color: #fff;
+  font-size: 0.96rem;
+  line-height: 1;
+  background: linear-gradient(90deg, #39a778 0%, #3db88a 100%);
+}
+
+.flight-ticket-body {
+  display: grid;
+  grid-template-columns: 0.66rem 1fr;
+  align-items: stretch;
+  gap: 0.46rem;
+  padding: 0.4rem 0.5rem 0.48rem;
+}
+
+.flight-ticket-barcode {
+  border-radius: 4px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(45, 45, 45, 0.85) 0 1px,
+      transparent 1px 4px,
+      rgba(45, 45, 45, 0.9) 4px 6px,
+      transparent 6px 9px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #2d2d2d 0 0.8px,
+      transparent 0.8px 2.2px,
+      #2d2d2d 2.2px 2.8px,
+      transparent 2.8px 4.5px,
+      #2d2d2d 4.5px 5.9px,
+      transparent 5.9px 7.1px
+    );
+  background-blend-mode: multiply;
+  opacity: 0.82;
+}
+
+.flight-ticket-main strong {
+  display: block;
+  font-size: 0.86rem;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: #2e353f;
+}
+
+.flight-ticket-main p {
+  margin: 0.14rem 0 0;
+  font-size: 0.74rem;
+  color: #617084;
+  font-weight: 600;
+}
+
+.flight-ticket.compact {
+  width: 100%;
+  justify-self: stretch;
+}
+
+.flight-ticket.compact .flight-ticket-main strong {
+  font-size: 0.82rem;
+}
+
+.flight-ticket.compact .flight-ticket-main p {
+  font-size: 0.74rem;
+}
+
+.pin-tools {
+  margin-top: 0.78rem;
+  padding: 0.7rem 0.78rem;
+  border-radius: 12px;
+  border: 1px dashed #cfb69f;
+  background: color-mix(in srgb, #fff 80%, #f6eadb 20%);
+}
+
+.pin-tools p {
+  margin: 0 0 0.52rem;
+  color: #4f5d70;
+  font-size: 0.79rem;
+}
+
+.pin-save-btn {
+  width: 100%;
+  border: 1px solid #d9aa8f;
+  border-radius: 10px;
+  background: #fff7f1;
+  color: #8b380f;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.81rem;
+  font-weight: 800;
+}
+
+.total-board {
+  margin-top: 0.85rem;
+  border-radius: 18px;
+  border: 1px solid #d6bca7;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 243, 0.94) 0%, rgba(243, 236, 226, 0.94) 100%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.total-board-head {
+  padding: 0.9rem 0.9rem 0.7rem;
+  background:
+    radial-gradient(circle at 100% -20%, rgba(229, 110, 60, 0.22), transparent 40%),
+    radial-gradient(circle at 0% 130%, rgba(21, 130, 136, 0.22), transparent 40%);
+  border-bottom: 1px solid #d8c5b2;
+}
+
+.total-board-head h2 {
+  margin: 0;
+  letter-spacing: 0.08em;
+  font-size: 1.03rem;
+}
+
+.total-board-head p {
+  margin: 0.36rem 0 0;
+  color: #4f5b6f;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.total-day-list {
+  padding: 0.78rem;
+  display: grid;
+  gap: 0.68rem;
+}
+
+.total-day-card {
+  border-radius: 13px;
+  border: 1px solid #dcc8b6;
+  background: #fffefb;
+  padding: 0.72rem;
+}
+
+.total-day-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.62rem;
+  margin-bottom: 0.3rem;
+}
+
+.total-day-top h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.total-day-actions {
+  display: flex;
+  gap: 0.32rem;
+}
+
+.total-day-actions button {
+  border-radius: 999px;
+  border: 1px solid #d5b294;
+  background: #fff4eb;
+  color: #9a4215;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.3rem 0.52rem;
+}
+
+.total-day-content {
+  display: grid;
+  gap: 0.52rem;
+  margin-top: 0.45rem;
+}
+
+.total-timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.22rem 0 0;
+  display: grid;
+  gap: 0.2rem;
+  position: relative;
+}
+
+.total-timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 0.32rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: #dfc7b1;
+}
+
+.total-timeline-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5rem;
+  row-gap: 0.02rem;
+  align-items: start;
+  position: relative;
+  border-radius: 9px;
+  background: #fff7ef;
+  border: 1px solid #f0ddcb;
+  padding: 0.42rem 0.5rem 0.44rem 0.36rem;
+}
+
+.total-point-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+  border: 2px solid #d98e64;
+  background: #fff8f2;
+  margin-top: 0.06rem;
+}
+
+.total-time {
+  font-size: 0.73rem;
+  color: #526074;
+  grid-column: 2 / 3;
+}
+
+.total-timeline-list li strong {
+  font-size: 0.84rem;
+  grid-column: 2 / 3;
+}
+
+.total-cat {
+  font-size: 0.72rem;
+  color: #6f7988;
+  grid-column: 2 / 3;
+}
+
+.day-timeline-wrap {
+  margin-top: 0.9rem;
+  border-radius: 14px;
+  border: 1px solid #ddc8b7;
+  background: #fffaf5;
+  padding: 0.62rem;
+}
+
+.day-timeline-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.day-timeline-head h3 {
+  margin: 0;
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+}
+
+.day-timeline-head button {
+  border-radius: 999px;
+  border: 1px solid #d8b9a2;
+  background: #fff2e8;
+  color: #94462a;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.3rem 0.52rem;
+}
+
+.day-timeline-wrap .timeline {
+  margin-top: 0.58rem;
+  scrollbar-width: thin;
+  scrollbar-color: #f3a25f #ffeede;
+}
+
+.day-timeline-wrap .timeline::-webkit-scrollbar {
+  height: 11px;
+}
+
+.day-timeline-wrap .timeline::-webkit-scrollbar-track {
+  background: #fff2e4;
+  border-radius: 999px;
+  border: 1px solid #f2d5bc;
+}
+
+.day-timeline-wrap .timeline::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid #fff2e4;
+  background:
+    radial-gradient(circle at 24% 50%, rgba(255, 196, 130, 0.9) 0 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(255, 196, 130, 0.9) 0 2px, transparent 2px),
+    radial-gradient(circle at 76% 50%, rgba(255, 196, 130, 0.9) 0 2px, transparent 2px),
+    linear-gradient(180deg, #ffbe86 0%, #f39c57 100%);
+}
+
+.day-timeline-wrap .timeline::-webkit-scrollbar-thumb:hover {
+  background:
+    radial-gradient(circle at 24% 50%, rgba(255, 210, 148, 0.95) 0 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(255, 210, 148, 0.95) 0 2px, transparent 2px),
+    radial-gradient(circle at 76% 50%, rgba(255, 210, 148, 0.95) 0 2px, transparent 2px),
+    linear-gradient(180deg, #ffc894 0%, #f5a55f 100%);
+}
+
+.timeline {
+  margin-top: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(152px, 44vw);
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.45rem;
+  scroll-snap-type: x mandatory;
+}
+
+.timeline-card {
+  scroll-snap-align: start;
+  text-align: left;
+  display: grid;
+  align-content: start;
+  gap: 0.24rem;
+  border-radius: 14px;
+  border: 1px solid #ddcaba;
+  background: var(--paper);
+  padding: 0.78rem;
+  min-height: 146px;
+}
+
+.timeline-index {
+  width: 1.56rem;
+  height: 1.56rem;
+  border-radius: 999px;
+  border: 1px solid #ffceba;
+  color: #2b5c89;
+  font-size: 0.81rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.timeline-time {
+  margin: 0;
+  color: var(--ink-700);
+  font-size: 0.79rem;
+}
+
+.timeline-card strong {
+  line-height: 1.34;
+}
+
+.timeline-meta {
+  color: #556071;
+  font-size: 0.82rem;
+}
+
+.timeline-card.active {
+  border-color: var(--orange);
+  background: var(--orange-soft);
+  box-shadow: 0 9px 20px rgba(240, 104, 47, 0.2);
+}
+
+.detail-card {
+  margin-top: 0.9rem;
+  border-radius: 17px;
+  border: 1px solid #d5c5b2;
+  background:
+    linear-gradient(135deg, #fff 0%, #fff7ef 52%, #f8fff9 100%);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  position: sticky;
+  bottom: 0.4rem;
+  z-index: 4;
+  backdrop-filter: blur(2px);
+}
+
+.detail-time {
+  margin: 0;
+  color: var(--teal);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.detail-card h2 {
+  margin: 0.26rem 0 0.36rem;
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+}
+
+.detail-card p {
+  margin: 0;
+  color: #535f71;
+  line-height: 1.6;
+}
+
+.detail-actions {
+  margin-top: 0.7rem;
+}
+
+.detail-search-link {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.5rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid #d1bea9;
+  background: linear-gradient(180deg, #ffffff 0%, #fff4e8 100%);
+  color: #8f471b;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 5px 12px rgba(31, 37, 47, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+.detail-search-link:hover {
+  border-color: #e59a5f;
+  background: linear-gradient(180deg, #fffaf5 0%, #ffeddc 100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.highlights {
+  margin-top: 0.9rem;
+  border-radius: 16px;
+  border: 1px solid #d5c3af;
+  background: color-mix(in srgb, var(--teal-soft) 54%, #fff 46%);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.highlights h3 {
+  margin: 0 0 0.58rem;
+  font-size: 1.05rem;
+}
+
+.highlights ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.highlights li {
+  position: relative;
+  padding-left: 1.26rem;
+  color: #4a586a;
+  line-height: 1.42;
+}
+
+.highlights li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--teal);
+}
+
+.hero h1 {
+  letter-spacing: 0.14em;
+}
+
+.hero-copy {
+  font-size: 0.83rem;
+  max-width: 94%;
+}
+
+.popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 37, 47, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+
+.popup-panel {
+  width: min(390px, calc(100% - 1rem));
+  border-radius: 14px;
+  border: 1px solid #d8c1ab;
+  background: #fffcf7;
+  box-shadow: 0 16px 42px rgba(31, 37, 47, 0.3);
+  padding: 0.85rem;
+}
+
+.popup-panel h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.popup-panel p {
+  margin: 0.38rem 0 0.56rem;
+  font-size: 0.78rem;
+  color: #566071;
+}
+
+.popup-text {
+  width: 100%;
+  min-height: 170px;
+  border-radius: 10px;
+  border: 1px solid #d7c5b3;
+  background: #fff;
+  color: #2a3444;
+  padding: 0.6rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.popup-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.62rem;
+}
+
+.popup-actions button {
+  border-radius: 10px;
+  border: 1px solid #cfb89f;
+  background: #fff;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.79rem;
+  font-weight: 700;
+}
+
+.popup-status {
+  min-height: 1rem;
+  margin: 0.42rem 0 0;
+  font-size: 0.76rem;
+  color: #295f6b;
+}
+
+.travel-app.theme-1 .hero-kicker {
+  color: #7a4f45;
+}
+
+.travel-app.theme-1 .hero-copy {
+  color: #72564c;
+}
+
+.travel-app.theme-1 .day-tab {
+  border-color: #e1b39c;
+  background: #fff7f1;
+  color: #73493e;
+}
+
+.travel-app.theme-1 .day-tab.active {
+  border-color: #f2a15e;
+  background: #fff1e3;
+  color: #cc6a2a;
+  box-shadow: 0 8px 18px rgba(242, 161, 94, 0.3);
+}
+
+.travel-app.theme-1 .theme-switch-btn {
+  border-color: #dfb7a4;
+  background: #fff7f3;
+  color: #7d4f45;
+}
+
+.travel-app.theme-1 .theme-switch-btn.active {
+  border-color: #f2a15e;
+  background: #fff1e3;
+  color: #cc6a2a;
+  box-shadow: 0 6px 16px rgba(242, 161, 94, 0.28);
+}
+
+.travel-app.theme-1 .flight-ticket {
+  border-color: #deb79f;
+  background: #fff9f5;
+}
+
+.travel-app.theme-1 .flight-ticket-top {
+  background: linear-gradient(90deg, #2f9a70 0%, #39b982 100%);
+}
+
+.travel-app.theme-1 .flight-ticket-main strong {
+  color: #6c483f;
+}
+
+.travel-app.theme-1 .timeline-card {
+  border-color: #e0bea8;
+  background: #fffaf7;
+}
+
+.travel-app.theme-1 .timeline-card.active {
+  border-color: #f2a15e;
+  background: #fff2e6;
+  box-shadow: 0 9px 20px rgba(242, 161, 94, 0.22);
+}
+
+.travel-app.theme-1 .timeline-index {
+  border-color: #ecbca2;
+  color: #9d4f2f;
+}
+
+.travel-app.theme-1 .map-pin {
+  border-color: #f6c8a1;
+  background: #fffdf9;
+  color: #d19262;
+}
+
+.travel-app.theme-1 .map-pin.active {
+  border-color: #e67a35;
+  background: #fff0e2;
+  color: #b8531d;
+  box-shadow: 0 8px 18px rgba(230, 122, 53, 0.32);
+}
+
+.travel-app.theme-1 .detail-card {
+  border-color: #e0bfa9;
+  background: linear-gradient(135deg, #fffaf6 0%, #fff0e7 56%, #fff8f2 100%);
+}
+
+.travel-app.theme-1 .detail-time {
+  color: #ab5a38;
+}
+
+.travel-app.theme-1 .detail-search-link {
+  border-color: #dfb6a2;
+  background: linear-gradient(180deg, #fffefc 0%, #fff1e8 100%);
+  color: #8f4a2f;
+}
+
+.travel-app.theme-1 .highlights {
+  border-color: #dfbfa9;
+  background: #fff5ee;
+}
+
+.travel-app.theme-1 .highlights li::before {
+  color: #be6a49;
+}
+
+.travel-app.theme-1 .total-board {
+  border-color: #debca8;
+  background: linear-gradient(180deg, rgba(255, 248, 241, 0.96) 0%, rgba(250, 236, 225, 0.96) 100%);
+}
+
+.travel-app.theme-1 .total-board-head {
+  border-bottom-color: #dfbeaa;
+  background:
+    radial-gradient(circle at 100% -20%, rgba(223, 141, 95, 0.24), transparent 40%),
+    radial-gradient(circle at 0% 130%, rgba(234, 180, 145, 0.24), transparent 40%);
+}
+
+.travel-app.theme-1 .total-day-card {
+  border-color: #dfbfac;
+  background: #fffaf7;
+}
+
+.travel-app.theme-1 .total-day-actions button {
+  border-color: #dfb69f;
+  background: #fff0e7;
+  color: #92492c;
+}
+
+.travel-app.theme-1 .total-timeline-list li {
+  background: #fff4ec;
+  border-color: #f3ddcd;
+}
+
+.travel-app.theme-1 .total-point-dot {
+  border-color: #d98e64;
+}
+
+.travel-app.theme-1 .day-timeline-wrap {
+  border-color: #dfbfac;
+  background: #fff6ef;
+}
+
+.travel-app.theme-1 .day-timeline-head button {
+  border-color: #dfb69f;
+  background: #fff0e7;
+  color: #92492c;
+}
+
+.travel-app.theme-2 .hero-kicker,
+.travel-app.theme-2 .hero-copy {
+  color: #3f3f3f;
+}
+
+.travel-app.theme-2 .day-tab,
+.travel-app.theme-2 .theme-switch-btn {
+  border-color: #bcbcbc;
+  background: #ffffff;
+  color: #2a2a2a;
+}
+
+.travel-app.theme-2 .day-tab.active,
+.travel-app.theme-2 .theme-switch-btn.active {
+  border-color: #1f1f1f;
+  background: #f0f0f0;
+  color: #111111;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.travel-app.theme-2 .island-map,
+.travel-app.theme-2 .timeline-card,
+.travel-app.theme-2 .detail-card,
+.travel-app.theme-2 .highlights,
+.travel-app.theme-2 .total-board,
+.travel-app.theme-2 .total-day-card,
+.travel-app.theme-2 .total-timeline-list li,
+.travel-app.theme-2 .pin-tools {
+  border-color: #c8c8c8;
+  background: #fcfcfc;
+}
+
+.travel-app.theme-2 .map-pin {
+  border-color: #9d9d9d;
+  background: #ffffff;
+  color: #575757;
+}
+
+.travel-app.theme-2 .map-pin.active {
+  border-color: #111111;
+  background: #1f1f1f;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.travel-app.theme-2 .flight-ticket {
+  border-color: #bfbfbf;
+  background: #ffffff;
+}
+
+.travel-app.theme-2 .flight-ticket-top {
+  background: linear-gradient(90deg, #2b2b2b 0%, #4a4a4a 100%);
+}
+
+.travel-app.theme-2 .flight-ticket-main strong {
+  color: #222222;
+}
+
+.travel-app.theme-2 .timeline-card.active {
+  border-color: #252525;
+  background: #efefef;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.13);
+}
+
+.travel-app.theme-2 .timeline-index {
+  border-color: #9a9a9a;
+  color: #222222;
+}
+
+.travel-app.theme-2 .detail-time,
+.travel-app.theme-2 .highlights li::before {
+  color: #1f1f1f;
+}
+
+.travel-app.theme-2 .detail-search-link,
+.travel-app.theme-2 .total-day-actions button {
+  border-color: #bcbcbc;
+  background: #ffffff;
+  color: #222222;
+}
+
+.travel-app.theme-2 .total-point-dot {
+  border-color: #737373;
+}
+
+.travel-app.theme-2 .day-timeline-wrap {
+  border-color: #c8c8c8;
+  background: #fcfcfc;
+}
+
+.travel-app.theme-2 .day-timeline-wrap .timeline {
+  scrollbar-color: #7c7c7c #ececec;
+}
+
+.travel-app.theme-2 .day-timeline-wrap .timeline::-webkit-scrollbar-track {
+  background: #efefef;
+  border-color: #d5d5d5;
+}
+
+.travel-app.theme-2 .day-timeline-wrap .timeline::-webkit-scrollbar-thumb {
+  border-color: #efefef;
+  background:
+    radial-gradient(circle at 24% 50%, rgba(194, 194, 194, 0.85) 0 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(194, 194, 194, 0.85) 0 2px, transparent 2px),
+    radial-gradient(circle at 76% 50%, rgba(194, 194, 194, 0.85) 0 2px, transparent 2px),
+    linear-gradient(180deg, #9a9a9a 0%, #666666 100%);
+}
+
+.travel-app.theme-2 .day-timeline-wrap .timeline::-webkit-scrollbar-thumb:hover {
+  background:
+    radial-gradient(circle at 24% 50%, rgba(220, 220, 220, 0.9) 0 2px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(220, 220, 220, 0.9) 0 2px, transparent 2px),
+    radial-gradient(circle at 76% 50%, rgba(220, 220, 220, 0.9) 0 2px, transparent 2px),
+    linear-gradient(180deg, #aeaeae 0%, #7a7a7a 100%);
+}
+
+.travel-app.theme-2 .day-timeline-head button {
+  border-color: #bcbcbc;
+  background: #ffffff;
+  color: #222222;
+}
+
+.travel-app.theme-2 .total-board-head {
+  background: #f3f3f3;
+  border-bottom-color: #cccccc;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .map-pin.active {
+    animation: pulse 1.4s ease-in-out infinite;
   }
+
+  .timeline-card {
+    animation: reveal 0.35s ease both;
+  }
+
+  .timeline-card:nth-child(2) {
+    animation-delay: 0.05s;
+  }
+
+  .timeline-card:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+
+  .timeline-card:nth-child(4) {
+    animation-delay: 0.15s;
+  }
+
+  .timeline-card:nth-child(5) {
+    animation-delay: 0.2s;
+  }
+
+  .timeline-card:nth-child(6) {
+    animation-delay: 0.24s;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(14, 138, 143, 0.35);
+  }
+
+  65% {
+    box-shadow: 0 0 0 10px rgba(14, 138, 143, 0);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }

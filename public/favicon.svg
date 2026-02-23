@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Jeju Trip Favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff6ef"/>
+      <stop offset="100%" stop-color="#ffe6d1"/>
+    </linearGradient>
+    <linearGradient id="seal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffb16b"/>
+      <stop offset="100%" stop-color="#e87431"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <circle cx="32" cy="34" r="15" fill="url(#seal)"/>
+  <circle cx="27" cy="31" r="1.6" fill="#3a2a22"/>
+  <circle cx="37" cy="31" r="1.6" fill="#3a2a22"/>
+  <path d="M25 38c2.1 2.8 11.9 2.8 14 0" stroke="#3a2a22" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M32 16c5 0 8.5 2.8 10.4 7.4" stroke="#2f9a70" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="43.2" cy="24.2" r="2.2" fill="#38b57f"/>
+</svg>
