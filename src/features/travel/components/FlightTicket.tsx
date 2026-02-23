@@ -14,9 +14,7 @@ export default function FlightTicket({ flightText, compact = false }: FlightTick
 
   return (
     <aside className={`flight-ticket ${compact ? 'compact' : ''}`} aria-label="비행기 일정 정보">
-      <div className="flight-ticket-top">
-        <span>✈</span>
-      </div>
+      <div className="flight-ticket-top" />
       <div className="flight-ticket-body">
         <span className="flight-ticket-barcode" aria-hidden="true" />
         <div className="flight-ticket-main">
